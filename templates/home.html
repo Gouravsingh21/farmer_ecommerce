@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% block title %}
+UAFTP
+{% endblock title %}
+
+{% block header %}
+<nav class="navbar navbar-light bg-success">
+  <a class="navbar-brand" href="#">
+    <img src="/static/Agro/icons/user.png" width="50" height="50" class="d-inline-block align-top" alt="">
+    {{Name}}
+  </a>
+  <a class="btn btn-primary" href='/Food/myorder/{{email}}' role="button">Order</a>
+  <a href='/Food/mycart/{{email}}' ><button class='btn btn-primary'> View cart</button></a>
+</nav>
+
+<script>
+    $(document).ready(function(){
+        // there is my jquery
+        $("#fareg").hide();
+        $("#fareg1").hide();
+    });
+</script> 
+
+{% endblock header %}

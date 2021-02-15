@@ -1,0 +1,109 @@
+{% extends 'basic.html' %}
+{% block title %}
+farmer home
+{% endblock title %}
+{% block content %}
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Order</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Logout</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h2 class="card-title">{{Name}}</h2>
+    <h4 class="card-text">Welcome!! You are our valuable Farmer</4>
+    <h3 class="card-text">THANK YOU!!! FOR YOUR EFFORT GIVEN TO COUNTRY</h3>
+  </div>
+</div>
+
+<!--Creating Profile page-->
+<form class="p-3 mb-2 bg-white text-dark">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <h4>{{Name}}</h4>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <h4>{{data1.password}}</h4>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <h4>{{data1.address}}</h4>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Village</label>
+      <h4>{{data1.village}}</h4>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">District</label>
+      <h4>{{data1.distirct}}</h4>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Mobile Number</label>
+      <h4>{{data1.mobile}}</h4>
+    </div>
+  </div>
+</form>
+
+<!--Creating Product entry page-->
+{{s}}
+<h1>Add product below</h1>
+<form class='p-3 mb-2 bg-success text-dark' action='farhome' method='POST'>
+{% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Product Name</label>
+      <input type="text" class="form-control"  placeholder="Product Name" name='prodname'>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Product Rating</label>
+      <input type="text" class="form-control"  placeholder="Product Rating" name='prodrating'>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Speciality</label>
+    <input type="text" class="form-control"  placeholder="Enter the Product Speciality" name='prodspecial'>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Product Image</label>
+      <input type="file" class="form-control"  placeholder="Email" name='prodimage'>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Crop Type</label>
+      <select id="inputState" class="form-control" name='prodtype'>
+        <option selected>Choose...</option>
+        <option>
+        <p>Rabi</p>
+        </option>
+        <option >
+        <p>Kharif</p>
+        </option>
+        <option >
+        <p>Zyad</p>
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Price </label>
+      <input type="text" class="form-control" placeholder='Crop Price' name='prodprice'>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="mobile">Mobile </label>
+      <input type="text" class="form-control" placeholder='Enter the Registered Mobile number'   name='mobile' >
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Add product</button>
+</form>
+{% endblock content %}

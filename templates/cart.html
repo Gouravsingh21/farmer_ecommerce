@@ -1,0 +1,93 @@
+{% extends 'basic.html' %}
+
+{% block title %}
+mycart
+{% endblock title %}
+
+{% block content %}
+<form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">{{user.email}}</label>
+    <h4>{{user.Username}}</h4>
+    <h1 class='text-center'>My Cart</h1>
+  </div>
+</form>
+<table class="table table-hover table-bordered" id='carttable'>
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Product Category</th>
+      <th scope="col">Product Quantity in (Quintel)</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  {%for i in mycart%}
+    <tr>
+      <th scope="row">{{i.product.product_name}}</th>
+      <td>{{i.product.product_type}}</td>
+      <td>{{i.no_of_product}}</td>
+      <td>{{i.product.product_price}}</td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+<h2>Total Amount of the payment</h2>
+<h3 ><u>{{amount}}</u></h3>
+<style>
+  #carttable{
+    background-color:#5ced75;
+  }
+  </style>
+  <h2>Place Order below!!</h2>
+  <form action='/Food/myorder/{{user.email}}' method='POST'>
+  {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" value={{user.email}}>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Name</label>
+      <input type="text" class="form-control" id="inputPassword4" placeholder="Password" value={{user.Username}}>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="Enter House No./Street no./name" name='address'>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Enter Locality Name"name='address1'>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity" name='city'>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState" >State</label>
+      <input type="text" name="state" value='Delhi'>
+      <select id="inputState" class="form-control" >
+        <option  >Choose...</option>
+        <option  >Delhi</option>
+        <option  >Haryana</option>
+        <option  >Uttar Pradesh</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip Code</label>
+      <input type="text" class="form-control" id="inputZip"name='zip'>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Place Order</button>
+</form>
+{% endblock content %}

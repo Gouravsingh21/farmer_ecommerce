@@ -1,0 +1,18 @@
+{% extends 'basic.html' %}
+{% block title %}
+product_view
+{% endblock title %}
+{% block content %}
+<h1>This is the product page</h1>
+<div class="card-deck">
+{% for i  in product %}
+<div class="card">
+    <img class="card-img-top" src="/media/{{i.product_image}}" alt="Card image cap" width='100px' height='200px'>
+    <div class="card-body" id='card-body'>
+      <h4 class="card-title">{{i}}</h4>
+      <p class="cart-text">{{i.product_special}}</p>
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endblock content %}
