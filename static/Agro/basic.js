@@ -1,25 +1,17 @@
-$(document).ready(function(){
-    // there is my jquery
-    // $('#recipeCarousel').carousel({
-    //     interval: 10000
-    //   })
-      
-    //   $('.carousel .carousel-item').each(function(){
-    //       var minPerSlide = 3;
-    //       var next = $(this).next();
-    //       if (!next.length) {
-    //       next = $(this).siblings(':first');
-    //       }
-    //       next.children(':first-child').clone().appendTo($(this));
-          
-    //       for (var i=0;i<minPerSlide;i++) {
-    //           next=next.next();
-    //           if (!next.length) {
-    //               next = $(this).siblings(':first');
-    //             }
-              
-    //           next.children(':first-child').clone().appendTo($(this));
-    //         }
-    //   });
-      
-});
+//additional javascript for cart object
+var x = document.getElementsByClassName("cart")[0];
+if (x==undefined){
+}
+else{
+    var x = document.getElementsByClassName("cart")[0].getAttribute("href");
+    if (x=="/Food/cart//1"){    
+        var elem=document.getElementsByClassName("cart");
+        for(i=0;i<elem.length;i++){
+            document.getElementsByClassName("cart")[i].style.display="none";
+        }
+        var y=document.getElementsByClassName("productId");
+        for(i=0;i<y.length;i++){
+            document.getElementsByClassName("productId")[i].style.display="none"; 
+        }
+    }
+}

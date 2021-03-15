@@ -24,7 +24,7 @@ class farmer_product(models.Model):
     register_date=models.DateField(auto_now=True)
     farmer=models.ForeignKey(farmer_info,on_delete=models.CASCADE)
     product_price=models.IntegerField(default='1000')
-    product_image=models.ImageField(upload_to='farmer/images',default='')
+    product_image=models.ImageField(upload_to='media/farmer/images',default='')
 
     def  __str__(self):
         return self.product_name
